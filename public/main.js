@@ -4,7 +4,8 @@ var gameModule = (function (document) {
 
     "use strict";
 
-    var counter = 0,
+    var timeoutVar,
+        counter = 0,
         canvas,
         ctx,
         ballX,
@@ -26,6 +27,13 @@ var gameModule = (function (document) {
         }
     }
 
+    function start() {
+        scores = 0;
+
+        document.getElementById("main").addEventListener("click", tochEvent, false);
+        startGame();
+    }
+
     function startGame() {
         canvas = document.getElementById('game');
         ctx = canvas.getContext('2d');
@@ -44,23 +52,25 @@ var gameModule = (function (document) {
         ctx.fill();
 
 
-        if (counter <= 10) {
-            setTimeout(startGame, 2000);
-            counter = counter + 1;
+        if (counter >= 10) {
+
+
+        } else {
+                timeoutVar = setTimeout(startGame, 2000);
+                counter = counter + 1;
+            } 
         }
-    }
 
-    function start() {
-        scores = 0;
 
-        document.getElementById("main").addEventListener("click", tochEvent, false);
-        startGame();
-    }
+        function gameOver() {
+            console.log("Counter: " + counter);
+        }
 
-    return {
-        start: start
-    };
-}(document));
+
+        return {
+                start: start
+        }
+} (document));
 
 
 gameModule.start();
