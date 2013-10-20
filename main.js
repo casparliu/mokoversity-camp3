@@ -8,8 +8,18 @@ var gameModule = (function() {
         var colors = ['#ff0000', '#0000ff', 'yellow'];
         var length = colors.length;
 
+        
 
-        function start() {
+        function tochEvent(){
+            console.log("mouse click!");
+        }
+
+        function start(){
+            document.getElementById("main").addEventListener("click", tochEvent, false);
+            startGame();
+        }
+
+        function startGame() {
         var canvas = document.getElementById('game');
         var ctx = canvas.getContext('2d');
             var ballX = Math.floor(Math.random() * 600); // 0..300

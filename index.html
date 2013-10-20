@@ -1,7 +1,11 @@
+<!DOCTYPE html>
 <html>
-<link rel="stylesheet" type="text/css" href="bootstrap.css">
+<head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="bootstrap.css">
+</head>
 <body>
-	<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -12,6 +16,7 @@
     </button>
     <a class="navbar-brand" href="#">Brand</a>
   </div>
+
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -49,6 +54,22 @@
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
-<h2>Hello! World</h2>
+<style>
+#main {
+        width: 640px;
+        height: 480px;
+        background: url(./bg.jpg);
+}
+</style>
+<div class="row">
+        <div class="col-md-12">
+                        <div id="main"><canvas id="game"></canvas></div>
+        </div>
+</div>
+
+
+<script type="text/javascript" src="main.js"></script>
+
+
 </body>
 </html>
