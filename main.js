@@ -2,7 +2,11 @@ var gameModule = (function() {
 
 
         var timeoutVar,
-                counter = 0;
+                counter = 0,
+                ballX,
+                ballY,
+                ballR,
+                scores;
 
 
         var colors = ['#ff0000', '#0000ff', 'yellow'];
@@ -10,11 +14,21 @@ var gameModule = (function() {
 
         
 
-        function tochEvent(){
-            console.log("mouse click!");
+        function tochEvent(evt){
+            var x = evt.clientX,
+                y = evt.clientY;
+
+            var tmp = (ballX-x)*(ballX-x) + (ballY-y)*(ballY-y);
+
+            if(tmp < ballR * ballR){
+                scores += 100 - ballR;
+            }
+            console.log("your scores:" + scores);
         }
 
         function start(){
+            scores = 0;
+
             document.getElementById("main").addEventListener("click", tochEvent, false);
             startGame();
         }
@@ -22,9 +36,9 @@ var gameModule = (function() {
         function startGame() {
         var canvas = document.getElementById('game');
         var ctx = canvas.getContext('2d');
-            var ballX = Math.floor(Math.random() * 600); // 0..300
-            var ballY = Math.floor(Math.random() * 450);
-            var ballR = Math.floor(Math.random() * 80);
+            ballX = Math.floor(Math.random() * 600); // 0..300
+            ballY = Math.floor(Math.random() * 450);
+            ballR = Math.floor(Math.random() * 80);
 
 
         canvas.width = 640;
@@ -41,14 +55,14 @@ var gameModule = (function() {
 
 
         } else {
-                timeoutVar = setTimeout(start, 1000);
+                timeoutVar = setTimeout(startGame, 1000);
                 counter = counter + 1;
             } 
         }
 
 
         function gameOver() {
-        console.log("Counter: " + counter);
+            console.log("Counter: " + counter);
         }
 
 
